@@ -2,14 +2,17 @@
 {
     public String Titular { get; private set; }
     public double Saldo { get; private set; }
+    public DateTime DataAbertura { get; private set; }
+
     public void Deposita(double valor)
     {
         this.Saldo += valor;
     }
 
-    public Conta(String titular, double saldo) 
+    public Conta(String titular, double saldo, DateTime dataAbertura) 
     {
         this.Titular = titular;
         this.Saldo = saldo;
+        this.DataAbertura = dataAbertura;
     }
 }
