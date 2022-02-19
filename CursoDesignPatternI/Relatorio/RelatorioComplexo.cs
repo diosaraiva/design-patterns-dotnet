@@ -17,7 +17,7 @@ public class RelatorioComplexo : Relatorio
     {
         foreach(Conta c in contas) 
         {
-            Console.WriteLine( c.Nome + " - " + c.Numero + " - " + c.Agencia + " - " + c.Saldo );
+            Console.WriteLine( c.Titular + " - " + c.Numero + " - " + c.Agencia + " - " + c.Saldo );
         }
     }
 }

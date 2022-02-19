@@ -6,7 +6,7 @@ public class RespostaXml : IResposta
     {
         if(req.Formato == Formato.XML) 
         {
-            Console.WriteLine("<conta><titular>" + conta.Nome + "</titular><saldo>" + conta.Saldo + "</saldo></conta>");
+            Console.WriteLine("<conta><titular>" + conta.Titular + "</titular><saldo>" + conta.Saldo + "</saldo></conta>");
         }
         else 
         {

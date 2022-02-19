@@ -14,7 +14,7 @@ public class RelatorioSimples : Relatorio
     {
         foreach(Conta c in contas) 
         {
-            Console.WriteLine( c.Nome + " - " + c.Saldo );
+            Console.WriteLine( c.Titular + " - " + c.Saldo );
         }
     }
 }
