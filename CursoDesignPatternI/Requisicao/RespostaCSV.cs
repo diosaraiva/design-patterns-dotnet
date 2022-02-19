@@ -1,14 +1,14 @@
-public class RespostaCSV : IResposta 
+public class RespostaCSV : IResposta
 {
     public IResposta OutraResposta { get; set; }
 
-    public void Responde(Requisicao req, Conta conta) 
+    public void Responde(Requisicao req, Conta conta)
     {
-        if(req.Formato == Formato.CSV) 
+        if (req.Formato == Formato.CSV)
         {
             Console.WriteLine(conta.Titular + ";" + conta.Saldo);
         }
-        else 
+        else
         {
             OutraResposta.Responde(req, conta);
         }

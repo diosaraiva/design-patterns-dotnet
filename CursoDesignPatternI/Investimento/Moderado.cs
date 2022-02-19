@@ -1,7 +1,7 @@
 ﻿public class Moderado : IInvestimento
 {
     private Random random;
-    
+
     public Moderado()
     {
         this.random = new Random();
