@@ -1,6 +1,10 @@
 ﻿public class Orcamento
 {
     public IEstadoOrcamento EstadoAtual { get; set; }
+    public Orcamento() 
+    {
+        this.EstadoAtual = new EmAprovacao();
+    }
 
     public double Valor { get; set; }
 
@@ -43,6 +47,20 @@
     }
 
     public void Finaliza(Orcamento orcamento)
+    {
+        EstadoAtual.Finaliza(this);
+    }
+    public void Aprova() 
+    {
+        EstadoAtual.Aprova(this);
+    }
+
+    public void Reprova() 
+    {
+        EstadoAtual.Reprova(this);
+    }
+
+    public void Finaliza() 
     {
         EstadoAtual.Finaliza(this);
     }

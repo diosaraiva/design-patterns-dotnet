@@ -5,10 +5,7 @@
     {
         this.OutroImposto = outroImposto;
     }
-    public Imposto()
-    {
-        this.OutroImposto = null;
-    }
+    public Imposto() => this.OutroImposto = null;
     public abstract double Calcula(Orcamento orcamento);
     protected double CalculoDoOutroImposto(Orcamento orcamento)
     {
