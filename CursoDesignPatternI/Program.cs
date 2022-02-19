@@ -7,9 +7,9 @@
         orcamento.AdicionaItem(new Item("LAPIS", 250.0));
 
         // IMPOSTOS
-        IImposto iss = new ISS();
-        IImposto icms = new ICMS();
-        IImposto iccc = new ICCC();
+        Imposto iss = new ISS(new ICMS(new ICCC()));
+        Imposto icms = new ICMS();
+        Imposto iccc = new ICCC();
         CalculadorDeImpostos calculadorImpostos = new CalculadorDeImpostos();
         calculadorImpostos.RealizaCalculo(orcamento, iss);
         calculadorImpostos.RealizaCalculo(orcamento, icms);

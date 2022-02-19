@@ -6,7 +6,7 @@ public class RespostaEmPorcento : IResposta
     {
         if(req.Formato == Formato.PORCENTO) 
         {
-            Console.WriteLine(conta.Titular + "%" + conta.Saldo);
+            Console.WriteLine(conta.Nome + "%" + conta.Saldo);
         }
         else 
         {

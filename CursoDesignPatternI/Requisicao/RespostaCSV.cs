@@ -6,7 +6,7 @@ public class RespostaCSV : IResposta
     {
         if(req.Formato == Formato.CSV) 
         {
-            Console.WriteLine(conta.Titular + ";" + conta.Saldo);
+            Console.WriteLine(conta.Nome + ";" + conta.Saldo);
         }
         else 
         {

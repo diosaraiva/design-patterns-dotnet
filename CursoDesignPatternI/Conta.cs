@@ -1,15 +1,19 @@
 ﻿public class Conta
 {
-    public String Titular { get; private set; }
+    public String Nome { get; private set; }
     public double Saldo { get; private set; }
+    public int Numero { get; private set; }
+    public String Agencia { get; private set; }
     public void Deposita(double valor)
     {
         this.Saldo += valor;
     }
 
-    public Conta(String titular, double saldo) 
+    public Conta(String nome, double saldo, int numero, String agencia) 
     {
-        this.Titular = titular;
+        this.Nome = nome;
         this.Saldo = saldo;
+        this.Numero = numero;
+        this.Agencia = agencia;
     }
 }

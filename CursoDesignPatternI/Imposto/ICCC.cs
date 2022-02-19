@@ -1,6 +1,8 @@
-﻿public class ICCC : IImposto
+﻿public class ICCC : Imposto
 {
-    public double Calcula(Orcamento orcamento)
+    public ICCC(Imposto outroImposto) : base(outroImposto) { }
+    public ICCC() : base() { }
+     public override double Calcula(Orcamento orcamento)
     {
         if (orcamento.Valor < 1000)
         {
