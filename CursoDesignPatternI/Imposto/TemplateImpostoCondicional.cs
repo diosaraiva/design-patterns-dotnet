@@ -12,7 +12,7 @@ public abstract class TemplateDeImpostoCondicional : Imposto
         else
         {
             return MinimaTaxacao(orcamento);
-        }  
+        }
     }     
     public abstract bool DeveUsarMaximaTaxacao(Orcamento orcamento);
     public abstract double MaximaTaxacao(Orcamento orcamento);
