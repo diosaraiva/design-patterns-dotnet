@@ -1,4 +1,4 @@
-public class RespostaCSV : IResposta
+public class RespostaCsv : IResposta
 {
     public IResposta OutraResposta { get; set; }
 
@@ -6,7 +6,7 @@ public class RespostaCSV : IResposta
     {
         if (req.Formato == Formato.CSV)
         {
-            Console.WriteLine(conta.Titular + ";" + conta.Saldo);
+            Console.WriteLine(conta.Titular + ";" + conta.Saldo + ";");
         }
         else
         {
