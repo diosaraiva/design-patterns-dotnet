@@ -49,13 +49,17 @@
     */
     public static void Impostos(Orcamento orcamento)
     {
+        Console.WriteLine("IMPOSTOS");
+
         Imposto iss = new ISS(new ICMS(new ICCC()));
-        Imposto icms = new ICMS();
+        Imposto icms = new ICMS(new ICPP(new IKCV(new IHIT())));
         Imposto iccc = new ICCC();
         CalculadorDeImpostos calculadorImpostos = new CalculadorDeImpostos();
         calculadorImpostos.RealizaCalculo(orcamento, iss);
         calculadorImpostos.RealizaCalculo(orcamento, icms);
         calculadorImpostos.RealizaCalculo(orcamento, iccc);
+
+        Console.WriteLine("---");
     }
 
     /*
@@ -69,13 +73,19 @@
     */
     public static void Descontos(Orcamento orcamento)
     {
+        Console.WriteLine("DESCONTOS");
+
         CalculadorDeDesconto calculadorDescontos = new CalculadorDeDesconto();
         double desconto = calculadorDescontos.Calcula(orcamento);
         Console.WriteLine(desconto);
+
+        Console.WriteLine("---");
     }
 
     public static void Requisicao(Orcamento orcamento)
     {
+        Console.WriteLine("REQUISIÇÃO");
+
         Conta conta = new Conta("Diogo", 007, 500.00, new DateTime(), "MI-6");
 
         RespostaXml xml = new RespostaXml();
@@ -86,6 +96,8 @@
 
         RespostaPorCento porCento = new RespostaPorCento();
         porCento.Responde(new Requisicao(Formato.PORCENTO), conta);
+
+        Console.WriteLine("---");
     }
 
     /*
@@ -98,6 +110,8 @@
     */
     public static void Estado(Orcamento orcamento)
     {
+        Console.WriteLine("ESTADO");
+
         orcamento = new Orcamento(500.0);
         orcamento.AplicaDescontoExtra();
         Console.WriteLine(orcamento.Valor); // imprime 475,00 pois descontou 5%
@@ -109,6 +123,8 @@
         //reforma.AplicaDescontoExtra(); //lança excecao, pois não pode dar desconto nesse estado
         //reforma.Aprova(); //lança exceção, pois não pode ir para aprovado
         orcamento.Finaliza();
+
+        Console.WriteLine("---");
     }
 
     /*
@@ -134,28 +150,37 @@
 
         criador.ComItem(criadorItem.Constroi());
 
-        /* 
-        ACOES APÓS NOTA EXECUTADA: Observer
-        Quando o acoplamento da nossa classe está crescendo, ou quando temos diversas ações 
-        diferentes a serem executadas após um determinado processo, podemos implementar o Observer.
-        Ele permite que diversas ações sejam executadas de forma transparente à classe principal, 
-        reduzindo o acoplamento entre essas ações, facilitando a manutenção e evolução do código.
-        */
-        criador.AdicionarAcao(new EnviadorDeEmail());
-        criador.AdicionarAcao(new EnviadorDeSMS());
-        criador.AdicionarAcao(new NotaFiscalDao());
-        criador.AdicionarAcao(new Multiplicador(2));
-        criador.AdicionarAcao(new Multiplicador(3));
-        criador.AdicionarAcao(new Multiplicador(5.5));
+        Console.WriteLine("ACOES");
+        AcoesAposNota(criador);
 
         NotaFiscal nf = criador.Constroi();
+        Console.WriteLine("---");
 
-        Console.WriteLine(nf.RazaoSocial);
-        Console.WriteLine(nf.Cnpj);
+        Console.WriteLine("NOTA FISCAL");
+        Console.WriteLine("- Razão Social: " + nf.RazaoSocial);
+        Console.WriteLine("- CNPJ: " + nf.Cnpj);
         foreach (ItemDaNota item in nf.Itens)
         {
-            Console.WriteLine(item.Nome);
-            Console.WriteLine(item.Valor);
+            Console.WriteLine(" * " + item.Nome + ":" + item.Valor);
         }
+
+        Console.WriteLine("---");
+    }
+
+    /* 
+    ACOES APÓS NOTA EXECUTADA: Observer
+    Quando o acoplamento da nossa classe está crescendo, ou quando temos diversas ações 
+    diferentes a serem executadas após um determinado processo, podemos implementar o Observer.
+    Ele permite que diversas ações sejam executadas de forma transparente à classe principal, 
+    reduzindo o acoplamento entre essas ações, facilitando a manutenção e evolução do código.
+    */
+    public static void AcoesAposNota(NotaFiscalBuilder notaFiscalBuilder)
+    {
+        notaFiscalBuilder.AdicionarAcao(new EnviadorDeEmail());
+        notaFiscalBuilder.AdicionarAcao(new EnviadorDeSMS());
+        notaFiscalBuilder.AdicionarAcao(new NotaFiscalDao());
+        notaFiscalBuilder.AdicionarAcao(new Multiplicador(2));
+        notaFiscalBuilder.AdicionarAcao(new Multiplicador(3));
+        notaFiscalBuilder.AdicionarAcao(new Multiplicador(5.5));
     }
 }

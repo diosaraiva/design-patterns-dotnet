@@ -6,6 +6,10 @@ public class Multiplicador : IAcaoAposGerarNota
 
     public void Executa(NotaFiscal notaFiscal)
     {
-        Console.WriteLine(notaFiscal.ValorBruto * this.Fator);
+        Console.WriteLine("Multiplicador (Valor["
+        + notaFiscal.ValorBruto.ToString()
+        + "] * Fator[" + this.Fator.ToString()
+        + "]): "
+        + notaFiscal.ValorBruto * this.Fator);
     }
 }
