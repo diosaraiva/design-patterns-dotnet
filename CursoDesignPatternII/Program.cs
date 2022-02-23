@@ -2,6 +2,19 @@
 {
     static void Main(String[] args)
     {
-        Console.WriteLine("2!");
+        //Factory();
+    }
+
+    public static void Factory()
+    {
+        Console.WriteLine("FACTORY");
+
+        // Factory do GoF
+        IDbConnection conexao = new ConnectionFactory().GetConnection();
+
+        IDbCommand comando = conexao.CreateCommand();
+        comando.CommandText = "select * from tabela";
+
+        Console.WriteLine("---");
     }
 }
